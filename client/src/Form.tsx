@@ -8,16 +8,17 @@ const Form = () => {
   let [backgroundClass, setBackgroundClass] = useState('')
   let [wordSequence, setwordSequence] = useState({})
 
-  const handleChange = async (e: any) =>{
+  const handleChange = async (e: any) => {
     const input = e.target.value
 
-    try {
-      const charSequence: CharSequence = await axios.post('http://localhost:3001/api/charSeq',{ palabra: input })
-      setwordSequence(wordSequence = charSequence.resultado)
-      setBackgroundClass(backgroundClass = 'white')
-    } catch(err) {
-        console.log(err)
+    if(input.length > 2){
+      try {
+        const charSequence: CharSequence = await axios.post('http://localhost:3001/api/charSeq',{ palabra: input })
+        setwordSequence(wordSequence = charSequence.resultado)
+        setBackgroundClass(backgroundClass = 'white')
+      } catch(err) {
         setBackgroundClass(backgroundClass = 'red')
+      }
     }
 
     setWord(word = input)
@@ -26,10 +27,7 @@ const Form = () => {
   const handleWord = () => {
     let wordArray = word.split('')
 
-    return wordArray.map((elem,i) => {
-    
-    return <b key={i} >{elem}</b>
-    })
+    return wordArray.map((elem,i) => <b key={i} >{elem}</b>)
   }
 
   return (
