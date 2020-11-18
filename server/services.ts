@@ -8,7 +8,7 @@ export const resolverSecuencias = (palabraEvaluada: string) : { palabraSinRepeti
   let sliceIndex: number = 2;
   
   while(loopSinRepetidos === 0){
-    [...palabraEvaluada].forEach((char: string, i: number) => {palabraEvaluada
+    [...palabraEvaluada].forEach((char: string, i: number) => {
       let indicesSiguiente: string = palabraEvaluada.slice(i + 1, i + sliceIndex)
   
       if (indicesSiguiente) {
@@ -42,7 +42,7 @@ export const checkPalindromo = (palabraEvaluada: string) => {
   const palabraAlReves: string = [...palabraEvaluada].reverse().join('')
 
   if(palabraEvaluada !== palabraAlReves){
-    throw("El parametro tiene que ser palíndromo")
+    throw new Error("El parametro tiene que ser palíndromo")
   }
   return palabraEvaluada
 }
