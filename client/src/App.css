@@ -28,3 +28,15 @@ form.form label.red {
 form.form label.white {
   background-color: #ffffff;
 }
+
+form.form input.black-label {
+  color: #000000;
+}
+
+form.form label.red-label {
+  color: #ff0000;
+}
+
+.red-label {
+  color: #ff0000 !important
+}

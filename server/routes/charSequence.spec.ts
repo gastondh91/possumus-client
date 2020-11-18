@@ -9,12 +9,12 @@ describe('Eliminar secuencias repetidas y retornar otra secuencia de esas repeti
   })
 
   test('La palabra resultante tiene que ser una secuencia que no incluya los patrones repetidos', () => {
-    expect(resolverSecuencias('malayalam').palabraSinRepetidos).toBe('mym')
-    expect(resolverSecuencias('rotomotor').palabraSinRepetidos).toBe('rmr')
+    expect(resolverSecuencias('malayalam').secSinRepetidos).toBe('mym')
+    expect(resolverSecuencias('rotomotor').secSinRepetidos).toBe('rmr')
   })
 
   test('La palabra resultante puede variar en cantidad de caracteres', () => {
-    expect(resolverSecuencias('anana').palabraSinRepetidos).toBe('a')
+    expect(resolverSecuencias('anana').secSinRepetidos).toBe('a')
   })
 
   test('Los patrones que se repiten deben ser aquellos que quedaron fuera del resultado',() => {
