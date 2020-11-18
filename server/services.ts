@@ -7,6 +7,7 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
   let loopSinRepetidos: number = 0;
   let sliceIndex: number = 2;
   
+  // La idea es una recursion en lugar de un while, pero no me alcanzo el tiempo para refactorizar esta parte
   while(loopSinRepetidos === 0){
     [...palabraEvaluada].forEach((char: string, i: number) => {
       let indicesSiguiente: string = palabraEvaluada.slice(i + 1, i + sliceIndex)
