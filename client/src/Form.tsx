@@ -6,7 +6,7 @@ const Form = () => {
   
   let [word, setWord] = useState('')
   let [backgroundClass, setBackgroundClass] = useState('')
-  let [wordSequence, setwordSequence] = useState({ secSinRepetidos: '', patronRepetido: '' })
+  let [wordSequence, setwordSequence] = useState({ secSinRepetidos: '', patronRepetido: '',cantRepeticiones: '' })
 
   const handleChange = async (e: any) => {
     const input = e.target.value
@@ -17,7 +17,7 @@ const Form = () => {
         setBackgroundClass('white')
       } catch(err) {
         setBackgroundClass('red')
-        setwordSequence({ secSinRepetidos: '', patronRepetido: '' })
+        setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: '' })
       }
 
     setWord(input)
@@ -26,22 +26,17 @@ const Form = () => {
   const handleWord = () => {
     const wordArray: string[] = word.split('')
 
-    if(wordSequence.patronRepetido){
+    const arraySec = Array.from(wordSequence.secSinRepetidos)
+    
+    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length === 2){
+      console.log(wordSequence.cantRepeticiones)
+      let repeticiones = new Array(wordSequence.cantRepeticiones)
+      repeticiones = [...repeticiones]
+      repeticiones = repeticiones.map(elem => elem = wordSequence.patronRepetido)
 
-      const arraySec = Array.from(wordSequence.secSinRepetidos)
+      const secArraySeparada = arraySec.concat(repeticiones)
 
-      // // Ejemplo: rotomotor = ["r", "oto", "m", "oto", "r"]
-      let secArraySeparada: string[] = []
-
-      arraySec.forEach((elem, i) => {
-        if(i !== arraySec.length-1){
-          secArraySeparada.push(elem, wordSequence.patronRepetido)
-        } else {
-          secArraySeparada.push(elem)
-        }
-      })
-
-      return secArraySeparada.map((elem: any,i: any) => {
+      return secArraySeparada.map((elem: string, i: number) => {
       
         if(elem === wordSequence.patronRepetido){
           return <b className="red-label" key={i} >{elem}</b>
@@ -49,7 +44,31 @@ const Form = () => {
         return <b key={i} >{elem}</b>
       })
     }
-  return wordArray.map(elem => <b>{elem}</b>)
+
+    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length > 2){
+
+      
+
+      // // Ejemplo: rotomotor = ["r", "oto", "m", "oto", "r"]
+      let secArraySeparada: string[] = []
+
+      arraySec.forEach((elem, i) => {
+        if(i !== arraySec.length - 1){
+          secArraySeparada.push(elem, wordSequence.patronRepetido)
+        } else {
+          secArraySeparada.push(elem)
+        }
+      })
+
+      return secArraySeparada.map((elem: string, i: number) => {
+      
+        if(elem === wordSequence.patronRepetido){
+          return <b className="red-label" key={i} >{elem}</b>
+        }
+        return <b key={i} >{elem}</b>
+      })
+    }
+  return wordArray.map((elem, i) => <b key={i}>{elem}</b>)
   }
 
   return (

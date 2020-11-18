@@ -1,6 +1,6 @@
 // Funciones helpers
 
-export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos: string, patronRepetido: string } => {
+export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos: string, patronRepetido: string, cantRepeticiones: number } => {
 
   let repetidosAnteriores: string[] = [];
   let repetidos: string[] = [];
@@ -31,9 +31,17 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
     } else {
       loopSinRepetidos = 1
       const patronRepetido = repetidos[repetidos.length-1]
+
+      let cantRepeticiones = 0
+      let palabraACortar = palabraEvaluada
+
+      while(palabraACortar.includes(patronRepetido)){
+        palabraACortar = palabraACortar.replace(patronRepetido,'')
+        cantRepeticiones == ++cantRepeticiones
+      }
     
       const secSinRepetidos: string = palabraEvaluada.split(patronRepetido).join('')
-      return { secSinRepetidos, patronRepetido }
+      return { secSinRepetidos, patronRepetido, cantRepeticiones }
     }
   }
 }
