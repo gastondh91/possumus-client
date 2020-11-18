@@ -12,7 +12,7 @@ const Form = () => {
     const input = e.target.value
 
       try {
-        const charSequence = await (await axios.post('http://localhost:3001/api/charSeq',{ palabra: input })).data
+        const charSequence = (await axios.post('http://localhost:3001/api/charSeq',{ palabra: input })).data
         setwordSequence(charSequence.resultado)
         setBackgroundClass('white')
       } catch(err) {
