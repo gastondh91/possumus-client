@@ -14,6 +14,6 @@ En la carpeta raiz:
 ### React
 
 * Para inicializar la app de react en la carpeta "client" ingresar en terminal el siguiente comando "npm start"
-* Debido a razones de tiempo no pude terminar la logica completa ni los tests unitarios correspondientes del lado del cliente. El componente con los textos "malayalam", "rotomotor" y "anana" funcionan pero la logica necesita un ajuste ya que esta forzada.
+* Debido a razones de tiempo no pude terminar la logica completa ni los tests unitarios correspondientes del lado del cliente. El componente con los textos "malayalam", "rotomotor" y "anana" funcionan pero la logica necesita un ajuste para funcionar con otros ejemplos.
 
-NOTA: Se incluyo el archivo env en la carpeta del cliente debido a un parametro que necesita la aplicacion que se encuentra dentro de este.
+NOTA: Se incluyo el archivo ".env" en la carpeta del cliente que contiene un parametro de "jest" para que este no de problemas.
