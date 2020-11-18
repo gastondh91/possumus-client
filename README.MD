@@ -8,7 +8,7 @@ En la carpeta raiz y client ingresar "npm i" en los la terminal
 
 En la carpeta raiz:
 
-* Para inicializar las pruebas se utiliza el comando "npm test" en la terminal.
+* Para inicializar las pruebas se utiliza el comando "npm test" en la terminal los cuales funcionan correctamente.
 * Para inicializar el servidor en el puerto 3001 ingresar "npm run dev"
 
 ### React
