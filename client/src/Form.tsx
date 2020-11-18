@@ -14,10 +14,10 @@ const Form = () => {
     try {
       const charSequence: CharSequence = await axios.post('http://localhost:3001/api/charSeq',{ palabra: input })
       setwordSequence(wordSequence = charSequence.resultado)
-      setBackgroundClass(backgroundClass = '.white')
+      setBackgroundClass(backgroundClass = 'white')
     } catch(err) {
         console.log(err)
-        setBackgroundClass(backgroundClass = '.red')
+        setBackgroundClass(backgroundClass = 'red')
     }
 
     setWord(word = input)

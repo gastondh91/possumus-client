@@ -17,12 +17,14 @@ form.form label {
   border-style: outset;
   background: lightgrey;
   height: 20px;
+  border-radius: 10px;
+  border-color: white;
 }
 
-.red {
-  background-color: red;
+form.form label.red {
+  background-color: #ffc4c4;
 }
 
-.white {
-  background-color: white;
+form.form label.white {
+  background-color: #ffffff;
 }
