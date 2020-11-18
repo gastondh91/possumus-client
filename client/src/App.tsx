@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Contador from './Contador'
+import Form from './Form'
 
 const App = ()=> (
     <div className="App">
-      <header className="App-header">
-      <Contador />
+      <header>
+      <Form />
       </header>
     </div>
   )

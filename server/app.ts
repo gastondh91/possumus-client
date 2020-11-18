@@ -1,6 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser"
-import rutas from './routes/charSecuence';
+import rutas from './routes/charSequence';
 
 const app = express()
 

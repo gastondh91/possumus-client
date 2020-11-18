@@ -3,7 +3,7 @@ const router = express.Router()
 import { Request, Response } from 'express'
 import { checkPalindromo, resolverSecuencias } from '../services'
 
-router.post('/reserva', (req: Request, res: Response): void => {
+router.post('/charSeq', (req: Request, res: Response): void => {
   
   const { palabra }: { palabra: string } = req.body
   

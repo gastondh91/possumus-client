@@ -1,6 +1,6 @@
 // Funciones helpers
 
-export const resolverSecuencias = (palabraEvaluada: string) : string => {
+export const resolverSecuencias = (palabraEvaluada: string) : { palabraSinRepetidos: string, patronRepetido: string } => {
 
   let repetidosAnteriores: string[] = [];
   let repetidos: string[] = [];
@@ -32,8 +32,8 @@ export const resolverSecuencias = (palabraEvaluada: string) : string => {
       loopSinRepetidos = 1
       const patronRepetido = repetidos[repetidos.length-1]
     
-      const resultado: string = palabraEvaluada.split(patronRepetido).join('')
-      return resultado
+      const palabraSinRepetidos: string = palabraEvaluada.split(patronRepetido).join('')
+      return { palabraSinRepetidos, patronRepetido }
     }
   }
 }
