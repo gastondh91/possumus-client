@@ -13,14 +13,14 @@ describe('Eliminar secuencias repetidas y retornar otra secuencia de esas repeti
     expect(resolverSecuencias('rotomotor').secSinRepetidos).toBe('rmr')
   })
 
+  test('La palabra resultante puede variar en cantidad de caracteres', () => {
+    expect(resolverSecuencias('anana').secSinRepetidos).toBe('a')
+  })
+
   test('Se devuelve la cantidad de veces que el patron fue repetido', () => {
     expect(resolverSecuencias('anana').cantRepeticiones).toBe(2)
     expect(resolverSecuencias('malayalam').cantRepeticiones).toBe(2)
     expect(resolverSecuencias('rotomotor').cantRepeticiones).toBe(2)
-  })
-
-  test('La palabra resultante puede variar en cantidad de caracteres', () => {
-    expect(resolverSecuencias('anana').secSinRepetidos).toBe('a')
   })
 
   test('Los patrones que se repiten deben ser aquellos que quedaron fuera del resultado',() => {
@@ -28,6 +28,5 @@ describe('Eliminar secuencias repetidas y retornar otra secuencia de esas repeti
     expect(resolverSecuencias('rotomotor').patronRepetido).toBe('oto')
     expect(resolverSecuencias('anana').patronRepetido).toBe("na")
   })
-
-
+  
 })
