@@ -1,3 +1,5 @@
+import chalk from 'chalk'
+
 // Funciones helpers
 
 export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos: string, patronRepetido: string, cantRepeticiones: number } => {
@@ -51,7 +53,7 @@ export const checkPalindromo = (palabraEvaluada: string) => {
   const palabraAlReves: string = [...palabraEvaluada].reverse().join('')
 
   if(palabraEvaluada !== palabraAlReves){
-    throw new Error("El parametro tiene que ser palíndromo")
+    throw new Error(chalk.redBright("El parametro tiene que ser palíndromo"))
   }
   return palabraEvaluada
 }
