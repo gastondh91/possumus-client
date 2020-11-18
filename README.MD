@@ -14,4 +14,4 @@ En la carpeta raiz:
 ### React
 
 * Para inicializar la app de react en la carpeta "client" ingresar en terminal el siguiente comando "npm start"
-* Debido a razones de tiempo no pude terminar la logica del lado del cliente ni personalizar estilos.
+* Debido a razones de tiempo no pude terminar la logica completa ni los tests unitarios correspondientes del lado del cliente. Funciona probar con los textos "malayalam" y "rotomotor", no asi "anana"
