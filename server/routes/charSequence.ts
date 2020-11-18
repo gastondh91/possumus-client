@@ -4,7 +4,7 @@ import { checkPalindromo, resolverSecuencias } from '../services'
 import chalk from 'chalk'
 const router = express.Router()
 
-router.post('/charSeq', (req: Request, res: Response): void => {
+router.post('/charSequence', (req: Request, res: Response): void => {
   
   const { palabra }: { palabra: string } = req.body
   
