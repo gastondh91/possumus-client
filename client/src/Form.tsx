@@ -19,14 +19,13 @@ const Form = () => {
         setBackgroundClass('red')
         setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: '' })
       }
-
     setWord(input)
   }
 
   const handleWord = () => {
     const wordArray: string[] = word.split('')
 
-    const arraySec = Array.from(wordSequence.secSinRepetidos)
+    const arraySec = [...wordSequence.secSinRepetidos]
 
     if(wordSequence.patronRepetido){
 
@@ -72,7 +71,7 @@ const Form = () => {
           <label className={backgroundClass} htmlFor=".input">{handleWord()}</label>
         </form>
       </section>
-    </div>    
+    </div>
   )
 }
 
