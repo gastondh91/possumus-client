@@ -2,18 +2,18 @@
 
 ### Inicio
 
-En la carpeta raiz y client ingresar "npm i" en los la terminal
+En la carpeta de raiz y "client" ingresar en ambos el comando "npm i" en la terminal para instalar los modulos de node.
 
 ### Api Node
 
 En la carpeta raiz:
 
-* Para inicializar las pruebas se utiliza el comando "npm test" en la terminal los cuales funcionan correctamente.
-* Para inicializar el servidor en el puerto 3001 ingresar "npm run dev"
+* Para inicializar las pruebas se utiliza el comando "npm test" en la terminal. Estos tests estan probados y funcionan correctamente.
+* Para inicializar el servidor en el puerto 3001 ingresar "npm run dev".
 
 ### React
 
-* Para inicializar la app de react en la carpeta "client" ingresar en terminal el siguiente comando "npm start"
-* Debido a razones de tiempo no pude terminar la logica completa ni los tests unitarios correspondientes del lado del cliente. El componente con los textos "malayalam", "rotomotor" y "anana" funcionan pero la logica necesita un ajuste para funcionar con otros ejemplos.
+* Para inicializar la app de react es necesario ingresar en la carpeta "client" y escribir en terminal el comando "npm start".
+* Debido a razones de tiempo no pude terminar los tests unitarios correspondientes al lado del cliente (React en este caso).
 
 NOTA: Se incluyo el archivo ".env" en la carpeta del cliente que contiene un parametro de "jest" para que este no de problemas.
