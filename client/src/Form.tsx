@@ -28,7 +28,7 @@ const Form = () => {
 
     const arraySec = Array.from(wordSequence.secSinRepetidos)
 
-    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length){
+    if(wordSequence.patronRepetido){
 
       let repeticiones = new Array(wordSequence.cantRepeticiones)
       repeticiones = [...repeticiones]
