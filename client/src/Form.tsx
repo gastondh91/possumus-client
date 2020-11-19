@@ -27,40 +27,32 @@ const Form = () => {
     const wordArray: string[] = word.split('')
 
     const arraySec = Array.from(wordSequence.secSinRepetidos)
-    
-    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length === 2){
-      console.log(wordSequence.cantRepeticiones)
+
+    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length){
+
       let repeticiones = new Array(wordSequence.cantRepeticiones)
       repeticiones = [...repeticiones]
       repeticiones = repeticiones.map(elem => elem = wordSequence.patronRepetido)
 
-      const secArraySeparada = arraySec.concat(repeticiones)
-
-      return secArraySeparada.map((elem: string, i: number) => {
-      
-        if(elem === wordSequence.patronRepetido){
-          return <b className="red-label" key={i} >{elem}</b>
-        }
-        return <b key={i} >{elem}</b>
-      })
-    }
-
-    if(wordSequence.patronRepetido && wordSequence.patronRepetido.length > 2){
-
-      
-
-      // // Ejemplo: rotomotor = ["r", "oto", "m", "oto", "r"]
-      let secArraySeparada: string[] = []
+      let arrayFinal: string[] = []
 
       arraySec.forEach((elem, i) => {
         if(i !== arraySec.length - 1){
-          secArraySeparada.push(elem, wordSequence.patronRepetido)
+          arrayFinal.push(elem, repeticiones[0])
+          repeticiones.pop()
         } else {
-          secArraySeparada.push(elem)
+          switch(repeticiones.length){
+            case 0 :
+              arrayFinal.push(elem)
+              break;
+            default:
+              arrayFinal.push(elem)
+              arrayFinal = arrayFinal.concat(repeticiones)
+          }
         }
       })
 
-      return secArraySeparada.map((elem: string, i: number) => {
+      return arrayFinal.map((elem: string, i: number) => {
       
         if(elem === wordSequence.patronRepetido){
           return <b className="red-label" key={i} >{elem}</b>
@@ -68,8 +60,9 @@ const Form = () => {
         return <b key={i} >{elem}</b>
       })
     }
-  return wordArray.map((elem, i) => <b key={i}>{elem}</b>)
+    return wordArray.map((elem, i) => <b key={i}>{elem}</b>)
   }
+  
 
   return (
     <div>
