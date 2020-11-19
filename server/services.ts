@@ -27,13 +27,13 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
 
     if(repetidos.length > repetidosAnteriores.length) {
 
-      const siguienteIndice: number = repetidos[repetidos.length-1].length + 1
+      const siguienteIndice: number = repetidos[repetidos.length - 1].length + 1
       sliceIndex = siguienteIndice
 
       repetidosAnteriores = [...repetidos]
     } else {
       loopSinRepetidos = 1
-      let patronRepetido = repetidos[repetidos.length-1]
+      let patronRepetido = repetidos[repetidos.length - 1]
 
       // Se establece una condicion para que en caso de que el primer caracter este incluido en el patron repetido este no sea eliminado y no genere incoherencias
       // Por ejemplo en "ananana" no se eliminaria la primera letra ("a") al excluirlo del patron "ana"
