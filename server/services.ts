@@ -55,7 +55,6 @@ export const checkPalindromo = (palabraEvaluada: string) => {
   if(palabraEvaluada !== palabraAlReves){
     throw new Error(chalk.redBright("El parametro tiene que ser palíndromo"))
   }
-  console.log(chalk.blue(palabraEvaluada, palabraAlReves))
 
   return palabraEvaluada
 }
