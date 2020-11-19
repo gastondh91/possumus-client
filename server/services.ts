@@ -55,7 +55,7 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
   }
 }
 
-export const checkPalindromo = (palabraEvaluada: string) => {
+export const checkPalindromo = (palabraEvaluada: string) : string | Error => {
   const palabraAlReves: string = [...palabraEvaluada].reverse().join('')
 
   if(palabraEvaluada !== palabraAlReves){
