@@ -33,7 +33,15 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
       repetidosAnteriores = [...repetidos]
     } else {
       loopSinRepetidos = 1
-      const patronRepetido = repetidos[repetidos.length-1]
+      let patronRepetido = ''
+
+      // Se establece una condicion para que en caso de que el primer caracter coincida este no sea eliminado y no genere incoherencias
+      // Por ejemplo en "anananana" no se eliminaria la primera "a" al excluirlo del patron "ana"
+      if(patronRepetido[0] === palabraEvaluada[0]){
+        patronRepetido = patronRepetido.slice(1)
+      } else {
+        patronRepetido = repetidos[repetidos.length-1]
+      }
 
       let cantRepeticiones = 0
       let palabraACortar = palabraEvaluada
