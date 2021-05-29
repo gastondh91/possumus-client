@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 import Form from './Form'
 
 const App = ()=> (
     <div className="App">
-      <header>
-        <Form />
-      </header>
+        <header>
+            <Form />
+        </header>
     </div>
-  )
+)
 
-export default App;
+export default App

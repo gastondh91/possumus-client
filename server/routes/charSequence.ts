@@ -6,15 +6,15 @@ const router = express.Router()
 
 router.post('/charSequence', (req: Request, res: Response): void => {
   
-  const { palabra }: { palabra: string } = req.body
+    const { palabra }: { palabra: string } = req.body
   
-  checkPalindromo(palabra)
-  resolverSecuencias(palabra)
+    checkPalindromo(palabra)
+    resolverSecuencias(palabra)
 
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
 
-  res.json({ resultado : resolverSecuencias(palabra) })
-  console.log(chalk.greenBright('El proceso finalizo sin errores'))
+    res.json({ resultado : resolverSecuencias(palabra) })
+    console.log(chalk.greenBright('El proceso finalizo sin errores'))
 })
 
 export default router
