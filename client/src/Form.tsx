@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useEffect } from 'react'
 
 
 const Form = () => {
@@ -8,19 +9,26 @@ const Form = () => {
     let [backgroundClass, setBackgroundClass] = useState('')
     let [wordSequence, setwordSequence] = useState({ secSinRepetidos: '', patronRepetido: '',cantRepeticiones: '' })
 
-    const handleChange = async (e: any) => {
-        const input = e.target.value
-
-        try {
-            const charSequence = (await axios.post('http://localhost:3001/api/charSequence',{ palabra: input })).data
-            setwordSequence(charSequence.resultado)
-            setBackgroundClass('white')
-        } catch(err) {
-            setBackgroundClass('red')
-            setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: '' })
+    useEffect(()=> {
+        const charSequence = async () => {
+            try {
+                const { data } = await axios.post('http://localhost:3001/api/charSequence',{ palabra: word })
+                setwordSequence(data.resultado)
+                setBackgroundClass('white')
+            } catch(err) {
+                setBackgroundClass('red')
+                setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: '' })
+            }
         }
-        setWord(input)
-    }
+        const timeoutId = setTimeout(()=> {
+            if(word.length > 2){
+                charSequence()
+            }
+        },500)
+        return ()=> {
+            clearTimeout(timeoutId)
+        }
+    },[word])
 
     const handleWord = () => {
         const wordArray: string[] = word.split('')
@@ -67,7 +75,7 @@ const Form = () => {
         <div>
             <section className="section-form">
                 <form className="form">
-                    <input placeholder="Ingrese una palabra" onChange={handleChange} className="input" type="text"/>
+                    <input placeholder="Ingrese una palabra" onChange={(e) => setWord(e.target.value)} className="input" type="text"/>
                     <label className={backgroundClass} htmlFor=".input">{handleWord()}</label>
                 </form>
             </section>
