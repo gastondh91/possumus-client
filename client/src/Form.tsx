@@ -2,27 +2,42 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
 
+interface response {
+  palindromo: {
+   secSinRepetidos: string, patronRepetido: string, cantRepeticiones: number
+  }
+  error: string | null
+} 
 
 const Form = () => {
   
     let [word, setWord] = useState('')
     let [backgroundClass, setBackgroundClass] = useState('')
-    let [wordSequence, setwordSequence] = useState({ secSinRepetidos: '', patronRepetido: '',cantRepeticiones: '' })
+    let [wordSequence, setwordSequence] = useState({ secSinRepetidos: '', patronRepetido: '',cantRepeticiones: 0 })
+
 
     useEffect(()=> {
-        const charSequence = async () => {
+        const charSequence = async (): Promise<response> => {
             try {
-                const { data } = await axios.post('http://localhost:3001/api/charSequence',{ palabra: word })
-                setwordSequence(data.resultado)
-                setBackgroundClass('white')
+                const { 'data': resultado }: { data: response} = await axios.post('http://localhost:3001/api/charSequence',{ palabra: word })
+
+                console.log({resultado})
+
+                if(resultado.error){
+                    setBackgroundClass('red')
+                    setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: 0 })
+                } else {
+                    setwordSequence(resultado.palindromo)
+                    setBackgroundClass('white')
+                }
+                return resultado
             } catch(err) {
-                setBackgroundClass('red')
-                setwordSequence({ secSinRepetidos: '', patronRepetido: '', cantRepeticiones: '' })
+                throw new Error('Hubo un error inesperado')
             }
         }
-        const timeoutId = setTimeout(()=> {
+        const timeoutId = setTimeout(async ()=> {
             if(word.length > 2){
-                charSequence()
+                await charSequence()
             }
         },500)
         return ()=> {
@@ -69,7 +84,6 @@ const Form = () => {
         }
         return wordArray.map((elem, i) => <b key={i}>{elem}</b>)
     }
-  
 
     return (
         <div>

@@ -2,7 +2,20 @@ import chalk from 'chalk'
 
 // Funciones helpers
 
-export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos: string, patronRepetido: string, cantRepeticiones: number } => {
+interface response {
+  palindromo: {
+    secSinRepetidos: string, patronRepetido: string, cantRepeticiones: number
+  }
+  error: string | null
+} 
+
+export const resolverSecuencias = (palabraEvaluada: string) : response => {
+
+    const palabraAlReves: string = [...palabraEvaluada].reverse().join('')
+
+    if(palabraEvaluada !== palabraAlReves){
+        return { error : 'El parametro tiene que ser palíndromo', palindromo : null }
+    }
 
     let repetidosAnteriores: string[] = []
     let repetidos: string[] = []
@@ -37,8 +50,13 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
 
             // Se establece una condicion para que en caso de que el primer caracter este incluido en el patron repetido este no sea eliminado y no genere incoherencias
             // Por ejemplo en "ananana" no se eliminaria la primera letra ("a") al excluirlo del patron "ana"
-            if(patronRepetido[0] === palabraEvaluada[0]){
-                patronRepetido = patronRepetido.slice(1)
+            try{
+                if(patronRepetido[0] === palabraEvaluada[0]){
+                    patronRepetido = patronRepetido.slice(1)
+                }
+            } catch(err){
+                // throw errorPalindromo
+                return { error : 'El parametro tiene que ser palíndromo', palindromo : null }
             }
 
             let cantRepeticiones = 0
@@ -50,17 +68,7 @@ export const resolverSecuencias = (palabraEvaluada: string) : { secSinRepetidos:
             }
 
             const secSinRepetidos = palabraEvaluada.split(patronRepetido).join('')
-            return { secSinRepetidos, patronRepetido, cantRepeticiones }
+            return { palindromo: { secSinRepetidos, patronRepetido, cantRepeticiones }, error: null }
         }
     }
-}
-
-export const checkPalindromo = (palabraEvaluada: string) : string | Error => {
-    const palabraAlReves: string = [...palabraEvaluada].reverse().join('')
-
-    if(palabraEvaluada !== palabraAlReves){
-        throw new Error(chalk.redBright('El parametro tiene que ser palíndromo'))
-    }
-
-    return palabraEvaluada
 }
